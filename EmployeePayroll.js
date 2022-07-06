@@ -20,7 +20,16 @@ class EmployeePayroll
     }
     set name(name)
     {
-        this._name = name;
+        let nameCheck = RegExp('^[A-Z]{1,}[a-zA-Z]{2,}$')
+        if(nameCheck.test(name))
+        {
+            this._name = name;
+        }
+        else
+        {
+            throw "Name should start with capital letter and have atleast 3 letters";
+        }
+        
     }
 
     Employee()
@@ -30,13 +39,20 @@ class EmployeePayroll
     }
 }
 {
-    let employeePayroll = new EmployeePayroll(1, "Elavarasu", 20000);
-    console.log(employeePayroll.Employee());
-    employeePayroll.id = 2;
-    employeePayroll.name = "Appusamy";
-    employeePayroll.salary = 20000;
-    console.log(employeePayroll.Employee());
     const date = new Date();
-    let EmployeeData = new EmployeePayroll(3, "Jaya Sudha", 25000, "M", date.toLocaleDateString());
+    let employeePayroll = new EmployeePayroll(1, "Elavarasu", 20000, "M", date.toLocaleDateString());
+    console.log(employeePayroll.Employee());
+    try
+    {
+        employeePayroll.id = 2;
+        employeePayroll.name = "appusamy";
+        employeePayroll.salary = 20000;
+        console.log(employeePayroll.Employee());
+    }
+    catch(ex)
+    {
+        console.error(ex);
+    }
+    let EmployeeData = new EmployeePayroll(3, "JayaSudha", 25000, "F", date.toLocaleDateString());
     console.log(EmployeeData.Employee());
 }
