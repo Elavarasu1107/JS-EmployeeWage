@@ -60,7 +60,6 @@ function calculateWage(empHours)
 
     //UC11B- Checking Number of Full Working Hours
     let fullTimeArray = new Array();
-    //empDailyHrsAndWageArray.filter(x => x.dailyHours == 8).forEach(x => console.log(x.toString()));
     empDailyHrsAndWageArray.filter(x => x.dailyHours == 8).forEach(x => fullTimeArray.push(x));
     console.log("\nEmployee's all Full Time Woking Days: " + fullTimeArray.length);
     console.log(fullTimeArray.toString());
@@ -82,4 +81,12 @@ function calculateWage(empHours)
     //UC11F-Checking no.of Days Employee is Worked
     let workingDays = empDailyHrsAndWageArray.filter(x => x.dailyHours > 0);
     console.log("\nNumber of Days Employee Worked in a Month: " + workingDays.length);
+
+    //UC11G-Checking Full time wage is containing only 160
+    let fullTimeWageCheck = empDailyHrsAndWageArray.filter(x => x.dailyWage == 160).every(x => x.dailyWage == 160)
+    console.log("Is Full Time Wage array only contains 160: " + fullTimeWageCheck);
+
+    //UC11H-Checking any Part time wage in an Array
+    let partTimeWageCheck = empDailyHrsAndWageArray.some(x => x.dailyWage == 80);
+    console.log("Is there any part time wage in an Array: " + partTimeWageCheck);
 }
